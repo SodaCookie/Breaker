@@ -78,20 +78,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine\game\AllegroSystem.cpp" />
     <ClCompile Include="breaker.cpp" />
-    <ClCompile Include="engine\core\Engine.cpp" />
+    <ClCompile Include="engine\core\Data.cpp" />
+    <ClCompile Include="engine\core\GameEngine.cpp" />
     <ClCompile Include="engine\core\Component.cpp" />
     <ClCompile Include="engine\Block.cpp" />
+    <ClCompile Include="engine\core\SystemType.cpp" />
     <ClCompile Include="engine\event\EventSystem.cpp" />
     <ClCompile Include="engine\core\Entity.cpp" />
     <ClCompile Include="engine\core\System.cpp" />
     <ClCompile Include="engine\core\ObjectManager.cpp" />
+    <ClCompile Include="engine\core\Handle.cpp" />
+    <ClCompile Include="engine\render\WindowSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\game\AllegroSystem.h" />
     <ClInclude Include="engine\core\Data.h" />
-    <ClInclude Include="engine\core\Engine.h" />
+    <ClInclude Include="engine\core\GameEngine.h" />
     <ClInclude Include="engine\core\Component.h" />
     <ClInclude Include="engine\Block.h" />
+    <ClInclude Include="engine\core\SystemType.h" />
     <ClInclude Include="engine\engine.h" />
     <ClInclude Include="engine\GameState.h" />
     <ClInclude Include="engine\event\EventSystem.h" />
@@ -99,6 +106,7 @@
     <ClInclude Include="engine\core\System.h" />
     <ClInclude Include="engine\core\ObjectManager.h" />
     <ClInclude Include="engine\core\Handle.h" />
+    <ClInclude Include="engine\render\WindowSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

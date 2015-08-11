@@ -1,19 +1,29 @@
 #include "engine/event/EventSystem.h"
 
-EventSystem::EventSystem(std::shared_ptr<ALLEGRO_EVENT_QUEUE> queue) :
-queue(queue)
+EventSystem::EventSystem()
 {
 }
 
 
 EventSystem::~EventSystem()
 {
-	al_destroy_event_queue(queue.get());
+	al_destroy_event_queue(queue);
 }
 
-void EventSystem::handle(){
+bool EventSystem::init(){
+
+}
+
+void EventSystem::quit(){
+
+}
+
+int EventSystem::update(std::vector<std::shared_ptr<Component>> components, double dtime){
 	ALLEGRO_EVENT event;
-	while (al_get_next_event(queue.get(), &event)){
-		
+	while (al_get_next_event(queue, &event)){
+		if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+			return SYSTEMEXIT;
+		}
 	}
+	return SYSTEMNORMAL;
 }
