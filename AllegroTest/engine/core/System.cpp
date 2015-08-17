@@ -21,6 +21,6 @@ SystemType System::get_type(){
 	return type;
 }
 
-void System::set_error_msg(std::string msg){
+void System::set_error_msg(const std::string& msg){
 	error_msg = msg;
 }	

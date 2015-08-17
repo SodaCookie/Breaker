@@ -10,7 +10,7 @@ void Engine::init(){
 	/*Calls all systems' init methods. If any method returns 
 	false then an error occured and the error will be printed out*/
 	for (std::shared_ptr<System> &system : systems){
-		if (!system->init()){
+		if (system->init() == INITFAILURE){
 			std::cout << system->error() << std::endl;
 			return;
 		}
@@ -31,14 +31,25 @@ bool Engine::was_init(){
 }
 
 void Engine::update(double dtime){
-	int status;
+	SYSTEMSTATUS status;
+	bool error = false;
 	for (std::shared_ptr<System> &system : systems){
-		status = system->update(object_manager.get_components(system->get_type()), dtime); // < 0 is error, 0 is all is good, > 0 is exit nicely
-		if (status){
-			if (status < 0){
-				std::cout << system->error() << std::endl; // Basic for now might eventually add error types
-			}
-			running = false;
+		status = system->update(object_manager.get_components(system->get_type()), dtime);
+		// Checks status
+		switch (status){
+			case (SYSTEMNORMAL) :
+				break;
+			case (SYSTEMEXIT) :
+				running = false;
+				break;
+			case (SYSTEMERROR) :
+				error = true;
+				running = false;
+				break;
+		}
+
+		if (error){
+			std::cout << system->error() << std::endl; // Basic for now might eventually add error types
 			break;
 		}
 	}

@@ -13,9 +13,9 @@ class AllegroSystem : public System
 		AllegroSystem();
 		~AllegroSystem();
 
-		bool init();
+		INITSTATUS init();
 		void quit();
-		int update(std::vector<std::shared_ptr<Component>> components, double dtime);
+		SYSTEMSTATUS update(std::vector<std::shared_ptr<Component>> components, double dtime);
 };
 
 #endif

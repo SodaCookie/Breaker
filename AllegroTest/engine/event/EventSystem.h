@@ -2,10 +2,14 @@
 #define EVENTSYSTEM_H
 
 #include "engine/core/System.h"
+#include "engine/core/SystemType.h"
+#include "engine/core/Component.h"
 #include "allegro5/allegro.h"
 #include <memory>
 #include <vector>
 #include <map>
+
+extern const SystemType EventSystemType;
 
 class EventSystem : public System
 {
@@ -16,12 +20,13 @@ class EventSystem : public System
 		EventSystem();
 		~EventSystem();
 
-		bool init();
+		INITSTATUS init();
 		void quit();
-		int update(std::vector<std::shared_ptr<Component>> components, double dtime);
+		SYSTEMSTATUS update(std::vector<std::shared_ptr<Component>> components, double dtime);
 
+		void register_source(ALLEGRO_EVENT_SOURCE *source);
 		//void handle();
-		//void sub();
+		//void sub(std::shared_ptr<Component>);
 		//void unsub();
 		
 };

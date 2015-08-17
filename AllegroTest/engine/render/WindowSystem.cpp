@@ -9,21 +9,25 @@ width(width), height(height){
 WindowSystem::~WindowSystem(){
 }
 
-bool WindowSystem::init(){
+ALLEGRO_EVENT_SOURCE *WindowSystem::get_event_source(){
+	return al_get_display_event_source(window);
+}
+
+INITSTATUS WindowSystem::init(){
 	window = al_create_display(width, height);
 	
 	if (!window){
 		set_error_msg("Failed to create display\n");
-		return false;
+		return INITFAILURE;
 	}
 
-	return true;
+	return INITSUCCESS;
 }
 
 void WindowSystem::quit(){
 	al_destroy_display(window);
 }
 
-int WindowSystem::update(std::vector<std::shared_ptr<Component>> components, double dtime){
-	return 0;
+SYSTEMSTATUS WindowSystem::update(std::vector<std::shared_ptr<Component>> components, double dtime){
+	return SYSTEMNORMAL;
 }

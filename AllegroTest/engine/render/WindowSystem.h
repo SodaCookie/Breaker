@@ -19,10 +19,10 @@ class WindowSystem : public System
 		WindowSystem(int width, int height);
 		~WindowSystem();
 
-		bool init();
+		INITSTATUS init();
 		void quit();
-		int update(std::vector<std::shared_ptr<Component>> components, double dtime);
-		std::shared_ptr<Component> create_component(std::shared_ptr<void> data);
+		SYSTEMSTATUS update(std::vector<std::shared_ptr<Component>> components, double dtime);
+		ALLEGRO_EVENT_SOURCE *get_event_source();
 };
 
 #endif

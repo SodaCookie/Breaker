@@ -10,17 +10,17 @@ AllegroSystem::~AllegroSystem()
 {
 }
 
-bool AllegroSystem::init(){
+INITSTATUS AllegroSystem::init(){
 	if (!al_init()){
 		set_error_msg("Could not initiate Allegro");
-		return false;
+		return INITFAILURE;
 	}
-	return true;
+	return INITSUCCESS;
 }
 
 void AllegroSystem::quit(){
 }
 
-int AllegroSystem::update(std::vector<std::shared_ptr<Component>> components, double dtime){
-	return 0;
+SYSTEMSTATUS AllegroSystem::update(std::vector<std::shared_ptr<Component>> components, double dtime){
+	return SYSTEMNORMAL;
 }

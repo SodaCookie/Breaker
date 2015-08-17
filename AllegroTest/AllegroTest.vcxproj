@@ -45,7 +45,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ExecutablePath>C:\Users\Eric\Documents\Programming\Libaries\allegro\bin;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>C:\Users\Eric\Documents\Programming\C++\AllegroTest\AllegroTest;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Eric\Documents\Programming\C++\AllegroTest\AllegroTest;C:\Users\EricDesktop\Documents\Programming\Libraries\allegro\include;C:\Users\EricDesktop\Documents\GitHub\Breaker\AllegroTest;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\EricDesktop\Documents\Programming\Libraries\allegro\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -9,14 +9,16 @@
 #include <string>
 #include <vector>
 
-typedef bool INITSTATUS; // figure out if best option
-#define INITSUCCESS true
-#define INITFAILURE false
+enum INITSTATUS{
+	INITSUCCESS,
+	INITFAILURE
+};
 
-typedef int SYSTEMSTATUS;
-#define SYSTEMERROR -1
-#define SYSTEMNORMAL 0
-#define SYSTEMEXIT 1
+enum SYSTEMSTATUS{
+	SYSTEMERROR,
+	SYSTEMNORMAL,
+	SYSTEMEXIT
+};
 
 class System
 {
@@ -28,9 +30,9 @@ class System
 		System(SystemType type);
 		~System() = default;
 
-		virtual bool init() = 0;
+		virtual INITSTATUS init() = 0;
 		virtual void quit() = 0;
-		virtual int update(std::vector<std::shared_ptr<Component>> components, double dtime) = 0;
+		virtual SYSTEMSTATUS update(std::vector<std::shared_ptr<Component>> components, double dtime) = 0;
 		virtual std::shared_ptr<Component> create_component(Handle id, std::shared_ptr<void> data);
 		
 		virtual std::string error();
@@ -39,7 +41,7 @@ class System
 		SystemType get_type();
 		
 	protected:
-		void set_error_msg(std::string msg);
+		void set_error_msg(const std::string& msg);
 
 };
 
